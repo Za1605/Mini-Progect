@@ -35,7 +35,7 @@ function recursiveBuilder(object, parent) {
             : liCreator(key, object[key], parent)
     }
 
-}
+};
 
 
 

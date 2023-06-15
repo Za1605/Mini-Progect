@@ -28,10 +28,4 @@ function recursiveBuilder(object, parent) {
     }
 
 }
-//const button = document.createElement(`button`);
-//button.innerText = `post`;
-//user_block.appendChild(button);
-
-//button.onclick = () => {
-    //location.href = `title-post.html?userId=${user.id}`;
 
