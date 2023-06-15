@@ -5,7 +5,7 @@ fetch(`https://jsonplaceholder.typicode.com/posts`)
         const block = document.getElementsByClassName(`wrap`)[0];
         for (const user of users) {
             const user_block = document.createElement(`div`);
-            user_block.innerText = `${user.id}. ${user.title}`;
+            user_block.innerText =  `${user.title}` ;
             block.appendChild(user_block);
 
 
