@@ -1,7 +1,9 @@
+//На странице post-details.html:
+//7 Вивести всю, без виключення, інформацію про об'єкт post на який клікнули .
+//8 Нижчє інформаці про пост, вивести всі коментарі поточного поста (ендпоінт  - https://jsonplaceholder.typicode.com/posts/POST_ID/comments)
+const userId = new URL (location.href).searchParams.get(`postId`);
 
-const userId = new URL (location.href).searchParams.get(`userId`);
-
-fetch(`https://jsonplaceholder.typicode.com/posts/${userId}`)
+fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
     .then((res) =>res.json())
     .then((user) => {
         //console.log(userId)
