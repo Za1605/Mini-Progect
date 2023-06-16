@@ -26,7 +26,6 @@ function liCreator(key, value, parent) {
         recursiveBuilder(object, ul);
 
 
-
 }
 
 function recursiveBuilder(object, parent) {
