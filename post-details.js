@@ -32,10 +32,10 @@ fetch(`https://jsonplaceholder.typicode.com/comments/${userId}`)
     .then((res) =>res.json())
     .then((user) => {
         //console.log(user)
-        const block = document.getElementsByClassName(`wrap`)[0];
+        const box = document.getElementsByClassName(`wrap`)[0];
         const ul = document.createElement(`ul`);
         recursiveBuilder(user, ul);
-        block.appendChild(ul);
+        box.appendChild(ul);
     });
 function liCreator(key, value, parent) {
     const li = document.createElement(`li`);

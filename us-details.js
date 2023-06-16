@@ -16,8 +16,8 @@ function liCreator(key, value, parent) {
     li.innerText = `${key} : ${value}`;
     parent.appendChild(li);
 }
+function ulBuilder(key,object, parent){
 
-function ulBuilder(key, object, parent){
 }
 
 function recursiveBuilder(object, parent) {
@@ -29,3 +29,10 @@ function recursiveBuilder(object, parent) {
 
 }
 
+let id = new URL(location.href).searchParams.get('userid')
+let btn = document.createElement('button')
+btn.innerText = 'info User'
+document.body.append(div, btn)
+btn.onclick = function (){
+    location.href = `title-post.html?userId=${user.id}`
+};
