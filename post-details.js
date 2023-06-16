@@ -16,7 +16,17 @@ function liCreator(key, value, parent) {
     parent.appendChild(li);
 }
 
-function ulBuilder(key, object, parent){
+//function ulBuilder(key, object, parent){
+    function ulBuilder(key,object, parent){
+        const li = document.createElement(`li`);
+        const ul = document.createElement(`ul`);
+        li.innerText = `${key}`
+        parent.appendChild(li);
+        li.appendChild(ul);
+        recursiveBuilder(object, ul);
+
+
+
 }
 
 function recursiveBuilder(object, parent) {
@@ -32,10 +42,10 @@ fetch(`https://jsonplaceholder.typicode.com/comments/${userId}`)
     .then((res) =>res.json())
     .then((user) => {
         //console.log(user)
-        const block = document.getElementsByClassName(`wrap`)[0];
+        const box = document.getElementsByClassName(`wrap`)[0];
         const ul = document.createElement(`ul`);
         recursiveBuilder(user, ul);
-        block.appendChild(ul);
+        box.appendChild(ul);
     });
 function liCreator(key, value, parent) {
     const li = document.createElement(`li`);
