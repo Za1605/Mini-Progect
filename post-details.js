@@ -1,28 +1,34 @@
 //На странице post-details.html:
 //7 Вивести всю, без виключення, інформацію про об'єкт post на який клікнули .
-//8 Нижчє інформаці про пост, вивести всі коментарі поточного поста (ендпоінт  - https://jsonplaceholder.typicode.com/posts/POST_ID/comments)
+//8 Нижчє інформаці про пост, вивести всі коментарі поточного поста (ендпоінт
+// - https://jsonplaceholder.typicode.com/posts/POST_ID/comments)
+//const urlParams = new URLSearchParams(window.location.search);
+//const ID = urlParams.get("postId");
+const id = new URL (location.href).searchParams.get(`postsid`);
 
 
-fetch(`https://jsonplaceholder.typicode.com/users/${userId}/post`)
+
+ fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+
     .then(response => response.json())
     .then(post => {
-        let divAllPost = document.createElement('div')
-        for (const postElement of post) {
-            if (title === postElement.title){
+        let divAllPost1 = document.createElement('div')
+        for (const postTitle in post) {
+            //if (title === postElement.title){
                 let divAllPost = document.createElement('div')
-                divAllPost.classList.add('divAllPost')
+               divAllPost.classList.add('divAllPost')
                 let ul = document.createElement('ul')
-                for (const key in postElement) {
+                for (const key of postElement) {
                     let li = document.createElement('li')
-                    li.innerHTML = ` <b>${key}:</b> ${postElement[key]}`
+                    //li.innerHTML = `${key} ${postElement[key]}`
                     li.classList.add('li_user')
                     ul.append(li)
                 }
-                divAllPost.append(ul)
-                document.body.append(divAllPost)
-            }
-        }
-        fetch(`https://jsonplaceholder.typicode.com/posts/${PostId}/comments`)
+               divAllPost1.append(ul);
+               document.body.append(divAllPost1);
+
+
+        fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
             .then((response => response.json()))
             .then(comments =>{
                 let main_comments_post = document.createElement('div')
@@ -51,17 +57,3 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}/post`)
                 }
 
             } )
-
-    })
-
-
-
-
-
-
-
-
-
-
-
-
