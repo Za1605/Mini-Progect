@@ -80,7 +80,7 @@ function recursiveBuilder(object, parent,) {
 
 
 btn.onclick = function (){
-    location.href = `title-post.html?userId=${user.id}`
+    location.href = `post-details.html=${user.id}`
 };
 
 

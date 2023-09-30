@@ -1,72 +1,58 @@
 //На странице post-details.html:
 //7 Вивести всю, без виключення, інформацію про об'єкт post на який клікнули .
 //8 Нижчє інформаці про пост, вивести всі коментарі поточного поста (ендпоінт  - https://jsonplaceholder.typicode.com/posts/POST_ID/comments)
-const userId = new URL (location.href).searchParams.get(`postId`);
-
-fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
-    .then((res) =>res.json())
-    .then((user) => {
-        //console.log(userId)
-        const block = document.getElementsByClassName(`wrap`)[0];
-        const ul = document.createElement(`ul`);
-        recursiveBuilder(user, ul);
-        block.appendChild(ul);
-    });
-function liCreator(key, value, parent) {
-    const li = document.createElement(`li`);
-    li.innerText = `${key} : ${value}`;
-    parent.appendChild(li);
-}
-
-//function ulBuilder(key, object, parent){
-    function ulBuilder(key,object, parent){
-        const li = document.createElement(`li`);
-        const ul = document.createElement(`ul`);
-        li.innerText = `${key}`
-        parent.appendChild(li);
-        li.appendChild(ul);
-        recursiveBuilder(object, ul);
 
 
-}
+fetch(`https://jsonplaceholder.typicode.com/users/${userId}/post`)
+    .then(response => response.json())
+    .then(post => {
+        let divAllPost = document.createElement('div')
+        for (const postElement of post) {
+            if (title === postElement.title){
+                let divAllPost = document.createElement('div')
+                divAllPost.classList.add('divAllPost')
+                let ul = document.createElement('ul')
+                for (const key in postElement) {
+                    let li = document.createElement('li')
+                    li.innerHTML = ` <b>${key}:</b> ${postElement[key]}`
+                    li.classList.add('li_user')
+                    ul.append(li)
+                }
+                divAllPost.append(ul)
+                document.body.append(divAllPost)
+            }
+        }
+        fetch(`https://jsonplaceholder.typicode.com/posts/${PostId}/comments`)
+            .then((response => response.json()))
+            .then(comments =>{
+                let main_comments_post = document.createElement('div')
+                main_comments_post.classList.add('main_comments_post')
+                let comments_post = document.createElement('div')
+                comments_post.classList.add('comments_post')
 
-function recursiveBuilder(object, parent) {
-    for (const key in object) {
-        typeof object[key] === `object`
-            ? ulBuilder(key, object[key], parent)
-            : liCreator(key, object[key], parent)
-    }
+                let h1 = document.createElement('h1')
+                h1.innerText = 'Comments Post:'
+                document.body.append(h1)
+                document.body.append(comments_post)
+                for (const element of comments) {
+                    let divComments = document.createElement('div')
+                    let ul = document.createElement('ul')
+                    divComments.classList.add('divComments')
+                    for (const key in element) {
 
-}
+                        let li = document.createElement('li')
+                        li.classList.add('li_user')
+                        li.innerHTML = `<b>${key}</b>: ${element[key]}`
+                        ul.append(li)
+                        divComments.append(ul)
+                    }
+                    main_comments_post.append(divComments)
+                    document.body.append(main_comments_post)
+                }
 
-fetch(`https://jsonplaceholder.typicode.com/comments/${userId}`)
-    .then((res) =>res.json())
-    .then((user) => {
-        //console.log(user)
-        const box = document.getElementsByClassName(`wrap`)[0];
-        const ul = document.createElement(`ul`);
-        recursiveBuilder(user, ul);
-        box.appendChild(ul);
-    });
-function liCreator(key, value, parent) {
-    const li = document.createElement(`li`);
-    li.innerText = `${key} : ${value}`;
-    parent.appendChild(li);
-}
+            } )
 
-function ulBuilder(key, object, parent){
-}
-
-function recursiveBuilder(object, parent) {
-    for (const key in object) {
-        typeof object[key] === `object`
-            ? ulBuilder(key, object[key], parent)
-            : liCreator(key, object[key], parent)
-    }
-
-};
-
-
+    })
 
 
 
