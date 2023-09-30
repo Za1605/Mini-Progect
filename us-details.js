@@ -9,19 +9,19 @@
 fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
     .then(response => response.json())
     .then(user => {
-        let blockInus = document.createElement('div')
-        let div_info_user = document.createElement('div')
-        div_info_user.classList.add('block_info_user')
-        blockInus.classList.add('block_info_user')
-        let ul = document.createElement('ul')
-        let btnPost =  document.createElement('button')
-        btnPost.innerText = `post of current user`
-        btnPost.classList.add('btnPost')
+        let box = document.createElement('div');
+        let div_info_user = document.createElement('div');
+        div_info_user.classList.add('block_info_user');
+        box.classList.add('block_info_user');
+        let ul = document.createElement('ul');
+        let butPost =  document.createElement('button');
+        butPost.innerText = `post of current user`;
+        butPost.classList.add('btnPost');
         recursiveBuilder(user, ul);
-        blockInus.appendChild(ul);
-        blockInus.appendChild(btnPost)
-        btnPost.onclick = function (e) {
-            e.preventDefault()
+        box.appendChild(ul);
+        box.appendChild(butPost);
+        butPost.onclick = function (e) {
+            e.preventDefault();
 
             fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
                 .then(response => response.json())
@@ -34,7 +34,8 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
                         let h2Post = document.createElement('h2')
                         let btnInfoPost = document.createElement('button')
                         btnInfoPost.onclick = function (){
-                            location.href = `post-details.html?id=${id}&title=${postElement.title}`
+                            location.href = `post-details.html?userId=${userId}`
+
                         }
                         btnInfoPost.innerText = 'Post info'
                         btnInfoPost.classList.add('btnInfoPost')
@@ -79,9 +80,10 @@ function recursiveBuilder(object, parent,) {
 }
 
 
-btn.onclick = function (){
-    location.href = `post-details.html=${post.id}`
-};
+
+//btn.onclick = function (){
+    //location.href = `post-details.html?userId=${userId}`;
+//};
 
 
 
