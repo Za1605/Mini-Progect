@@ -10,42 +10,44 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
     .then(response => response.json())
     .then(user => {
         let box = document.createElement('div');
-        let div_info_user = document.createElement('div');
-        div_info_user.classList.add('block_info_user');
-        box.classList.add('block_info_user');
+        let userInfo = document.createElement('div');
+        userInfo.classList.add('userInfo');
+        box.classList.add('box');
         let ul = document.createElement('ul');
-        let butPost =  document.createElement('button');
-        butPost.innerText = `post of current user`;
-        butPost.classList.add('btnPost');
+        let but1 =  document.createElement('button');
+        but1.innerText = `post of current user`;
+        but1.classList.add('but1');
+
         recursiveBuilder(user, ul);
-        box.appendChild(ul);
-        box.appendChild(butPost);
-        butPost.onclick = function (e) {
+        userInfo.append(ul);
+        box.append(but1,userInfo );
+        but1.onclick = function (e) {
+
             e.preventDefault();
 
             fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
                 .then(response => response.json())
                 .then(posts =>{
-                    let main_div_post = document.createElement('div')
-                    main_div_post.classList.add('main_div_post')
+                    let divPost = document.createElement('div');
+                    divPost.classList.add('divPost')
                     for (const postElement of posts) {
-                        let divPost = document.createElement('div')
-                        divPost.classList.add('divPost')
-                        let h2Post = document.createElement('h2')
-                        let btnInfoPost = document.createElement('button')
-                        btnInfoPost.onclick = function (){
+                        let divPost1 = document.createElement('div');
+                        divPost1.classList.add('divPost1')
+                        let hPost = document.createElement('h2');
+                        let btnPost = document.createElement('button');
+                        btnPost.onclick = function (){
                             location.href = `post-details.html?userId=${userId}`
 
                         }
-                        btnInfoPost.innerText = 'Post info'
-                        btnInfoPost.classList.add('btnInfoPost')
-                        h2Post.innerText = `${postElement.title}`
-                        divPost.append(h2Post, btnInfoPost)
-                        main_div_post.append(divPost)
+                       btnPost.innerText = 'Post info';
+                       btnPost.classList.add('btnPost');
+                        hPost.innerText = `${postElement.title}`;
+                        divPost1.append(hPost, btnPost);
+                        divPost.append(divPost1);
 
-                        document.body.append(main_div_post)
+                        document.body.append(divPost);
                     }
-                    btnPost.setAttribute('disabled', 'disabled');
+
                 })
 
         }
