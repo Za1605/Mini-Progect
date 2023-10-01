@@ -7,30 +7,33 @@
 const id = new URL (location.href).searchParams.get(`posts`);
 //console.log(id);
 
- fetch(`https://jsonplaceholder.typicode.com/posts`)
+ fetch(`https://jsonplaceholder.typicode.com/user/${id}posts`)
 
-    .then(response => response.json())
-    .then(post => {
+    .then(value => value.json())
+    .then((post =>
+        //console.log(post) )
+    {
         let allpost1 = document.createElement('div');
-        for (const postEl of post) {
-            if (id === postEl.id) {
-                let allpost = document.createElement('div');
-                allpost.classList.add('allpost')
+        for (const postInf of post) {
+            if (post === postInf.title) {
+                let allPost = document.createElement('div');
+                allPost.classList.add('allPost');
                 let ul = document.createElement('ul');
-                for (const key of postEl) {
+                for (const key of postInf) {
                     let li = document.createElement('li');
-                    li.innerHTML = `${key} ${postEl[key]}`;
-                    li.classList.add('li_user');
+                    li.innerHTML = `${key} ${postInf[key]}`;
                     ul.append(li);
                 }
                 allpost.append(ul);
                 document.body.append(allpost1);
             }
         }
-
-        fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
+        // }
+        fetch(`https://jsonplaceholder.typicode.com/posts${id}/comments`)
             .then(( response => response.json() ))
-            .then(comments => {
+            .then(comments =>
+                //console.log(comments))
+            {
 
                 let commentsPost = document.createElement('div');
                 commentsPost.classList.add('commentsPost');
@@ -44,18 +47,17 @@ const id = new URL (location.href).searchParams.get(`posts`);
                     let boxCom = document.createElement('div');
                     let ul = document.createElement('ul');
                     boxCom.classList.add('boxCom');
-                    for (const key in element) {
+                    for (const key of comments) {
 
                         let li = document.createElement('li');
-                        li.classList.add('li_user');
-                       li.innerHTML = `<b>${key}</b>: ${value[key]}`;
-                        ul.append(li);boxCom.append(ul);
+                        li.classList.add('li-user');
+                        li.innerHTML = `<b>${key}</b>: ${value[key]}`;
+                        ul.append(li);
+                        boxCom.append(ul);
                     }
-                   commentsPost.append(boxCom);
-                   document.body.append(commentsPost);
+                    commentsPost.append(boxCom);
+                    document.body.append(commentsPost);
                 }
             })
-
-
-
-        })
+    })
+}
