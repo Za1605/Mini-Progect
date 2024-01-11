@@ -4,24 +4,24 @@
 // - https://jsonplaceholder.typicode.com/posts/POST_ID/comments)
 //const urlParams = new URLSearchParams(window.location.search);
 //const ID = urlParams.get("postId");
-const id = new URL (location.href).searchParams.get(`posts`);
-//console.log(id);
+const id = new URL (location.href).searchParams.get('postId');
+console.log(id);
 
- fetch(`https://jsonplaceholder.typicode.com/user/${id}posts`)
+ fetch('https://jsonplaceholder.typicode.com/users/${id}posts')
 
     .then(value => value.json())
-    .then((post =>
-        //console.log(post) )
+    .then((user =>
+        //console.log(postId) )
     {
         let allpost1 = document.createElement('div');
-        for (const postInf of post) {
+        for (const postInf of user) {
             if (post === postInf.title) {
                 let allPost = document.createElement('div');
                 allPost.classList.add('allPost');
                 let ul = document.createElement('ul');
                 for (const key of postInf) {
                     let li = document.createElement('li');
-                    li.innerHTML = `${key} ${postInf[key]}`;
+                    li.innerHTML = `${key}- ${postInf[key]}`;
                     ul.append(li);
                 }
                 allpost.append(ul);
@@ -49,15 +49,11 @@ const id = new URL (location.href).searchParams.get(`posts`);
                     boxCom.classList.add('boxCom');
                     for (const key of comments) {
 
-                        let li = document.createElement('li');
-                        li.classList.add('li-user');
-                        li.innerHTML = `<b>${key}</b>: ${value[key]}`;
-                        ul.append(li);
-                        boxCom.append(ul);
-                    }
-                    commentsPost.append(boxCom);
-                    document.body.append(commentsPost);
-                }
-            })
-    })
-}
+                       // let li = document.createElement('li');
+                       // li.classList.add('li-user');
+                       // li.innerHTML = `<b>${key}</b>: ${value[key]}`;
+                       /// ul.append(li);
+                       // boxCom.append(ul);
+                    //}
+                    //commentsPost.append(boxCom)
+                    //document.body.append(commentsPost)}
