@@ -6,19 +6,8 @@
 </head>
 <style>
 
-    box{
-        display: flex;
-        text-align: center;
-        margin-top: 20px;
-        padding: 20px;
-        border: 1px solid #cebdbd;
-        background-color: #e8d4d4;
-    }
-
-
 
     button{
-
 
         background-color: blueviolet;
         color: white;
@@ -27,7 +16,21 @@
         display: block;
         margin: 20px auto;
         padding: 10px 20px;
+        flex-direction: column;
+        width: calc( 50% - 10px);
+    }
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
+        flex-direction: column;
+    }
+    divPost{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: calc( 20% - 10px);
     }
 </style>
 <body>

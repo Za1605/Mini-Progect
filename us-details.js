@@ -36,7 +36,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
                         let hPost = document.createElement('h2');
                         let btnPost = document.createElement('button');
                         btnPost.onclick = function (){
-                            location.href = `post-details.html?userId=${userId}`
+                            location.href = `post-details.html?id=${userId.post}`
 
                         }
                        btnPost.innerText = 'Post info';
