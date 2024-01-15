@@ -27,33 +27,31 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
 
             fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
                 .then(response => response.json())
-                .then(posts =>{
+                .then(posts => {
                     let divPost = document.createElement('div');
                     divPost.classList.add('divPost')
                     for (const postElement of posts) {
                         let divPost1 = document.createElement('div');
-                        divPost1.classList.add('divPost1')
+                        divPost1.classList.add('divPost1');
                         let hPost = document.createElement('h2');
                         let btnPost = document.createElement('button');
-                        btnPost.onclick = function (){
-                            location.href = `post-details.html?id=${userId.post}`
-
+                        btnPost.onclick = function () {
+                            location.href = `post-details.html?users&userId&post=${posts}`
                         }
-                       btnPost.innerText = 'Post info';
-                       btnPost.classList.add('btnPost');
+
+                        btnPost.innerText = 'Post info';
+                        btnPost.classList.add('btnPost');
                         hPost.innerText = `${postElement.title}`;
                         divPost1.append(hPost, btnPost);
                         divPost.append(divPost1);
-
                         document.body.append(divPost);
+
                     }
-
                 })
-
         }
-        document.body.append(box);
+            document.body.append(box)
+        })
 
-    })
 
 
 function liCreator(key, value, parent) {
@@ -80,14 +78,3 @@ function recursiveBuilder(object, parent,) {
     }
 
 }
-
-
-
-//btn.onclick = function (){
-    //location.href = `post-details.html?userId=${userId}`;
-//};
-
-
-
-
-
