@@ -60,7 +60,7 @@ function liCreator(key, value, parent) {
     parent.appendChild(li);
 }
 function ulBuilder(key,object, parent){
-    const li = document.createElement(`li`);
+    let li = document.createElement(`li`);
     const ul = document.createElement(`ul`);
     li.innerText = `${key}`
     parent.appendChild(li);
