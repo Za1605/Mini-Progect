@@ -28,7 +28,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
             fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
                 .then(response => response.json())
                 .then(posts => {
-                    let divPost = document.createElement('div');
+                    const divPost = document.createElement('div');
                     divPost.classList.add('divPost')
                     for (const postElement of posts) {
                         let divPost1 = document.createElement('div');

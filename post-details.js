@@ -20,7 +20,7 @@ const ID = urlParams.get("postId");
 fetch(`https://jsonplaceholder.typicode.com/posts/${ID}`)
  .then(response => response.json())
  .then(posts =>{
-     let ul = document.createElement('ul');
+     const ul = document.createElement('ul');
      for (const post of posts) {
          let li = document.createElement('li');
          li.innerHTML = '<li>${post.id}</li><li>${post.name}</li><li>${post.email}</li><li>${detail.body}</li>';
