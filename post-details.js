@@ -23,7 +23,7 @@ fetch(`https://jsonplaceholder.typicode.com/posts/${ID}`)
      let ul = document.createElement('ul');
      for (const post of posts) {
          let li = document.createElement('li');
-         li.innerHTML = '<li>${post.id}</li><li>${post.name}</li><li>${post.email}</li><li>${detail.body}</li>';
+         li.innerHTML = '<li>${post.id}</li><li>${post.name}</li><li>${post.email}</li><li>${post.body}</li>';
          ul.appendChild(li);
      }
      document.body.appendChild(ul);
