@@ -30,7 +30,10 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
                 .then(posts => {
                     const divPost = document.createElement('div');
                     divPost.classList.add('divPost')
+
                     for (const postElement of posts) {
+                        console.log(userId);
+                        console.log(postElement.id);
                         let divPost1 = document.createElement('div');
                         divPost1.classList.add('divPost1');
                         let hPost = document.createElement('h2');
