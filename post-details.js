@@ -15,16 +15,23 @@
 //console.log(postId)
 //console.log(JSON.stringify(postId))
 
-const urlParams = new URLSearchParams(window.location.search);
-const ID = urlParams.get("postId");
-fetch(`https://jsonplaceholder.typicode.com/posts/${ID}`)
+//const urlParams = new URLSearchParams(window.location.search);
+//const ID = urlParams.get("postId");
+ const postId = new URL (location.href).searchParams.get('postId');
+
+
+fetch(`https://jsonplaceholder.typicode.com/posts/4/comments`)
  .then(response => response.json())
- .then(posts =>{
+ .then(data =>{
+      console.log(data)
      let ul = document.createElement('ul');
-     for (const post of posts) {
+     for (const post of data) {
+         //console.log(postId);
+         //console.log(post);
          let li = document.createElement('li');
-         li.innerHTML = '<li>${post.id}</li><li>${post.name}</li><li>${post.email}</li><li>${post.body}</li>';
+         li.innerHTML = `<li>${data.id}</li><li>${data.name}</li>`;
          ul.appendChild(li);
+
      }
      document.body.appendChild(ul);
  });

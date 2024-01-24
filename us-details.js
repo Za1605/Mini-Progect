@@ -9,6 +9,8 @@
 fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
     .then(response => response.json())
     .then(user => {
+        console.log(userId)
+        console.log(user)
         let box = document.createElement('div');
         let userInfo = document.createElement('div');
         userInfo.classList.add('userInfo');
@@ -30,13 +32,16 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
                 .then(posts => {
                     const divPost = document.createElement('div');
                     divPost.classList.add('divPost')
+
                     for (const postElement of posts) {
+                        console.log(userId);
+                        console.log(postElement.id);
                         let divPost1 = document.createElement('div');
                         divPost1.classList.add('divPost1');
                         let hPost = document.createElement('h2');
                         let btnPost = document.createElement('button');
                         btnPost.onclick = function () {
-                            location.href = `post-details.html?userId=${userId}`;
+                            location.href = `post-details.html?postId=${userId}`;
                         }
 
                         btnPost.innerText = 'Post info';
@@ -47,7 +52,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
                         document.body.append(divPost);
 
                     }
-                })
+                });
         }
             document.body.append(box)
         })
