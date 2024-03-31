@@ -17,31 +17,19 @@
 
 //const urlParams = new URLSearchParams(window.location.search);
 //const ID = urlParams.get("postId");
- const postId = new URL (location.href).searchParams.get('postId');
+const postId = new URL (location.href).searchParams.get('postId');
 
 
-fetch(`https://jsonplaceholder.typicode.com/posts/4/comments`)
+fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
  .then(response => response.json())
  .then(data =>{
       console.log(data)
-     let ul = document.createElement('ul');
-     for (const post of data) {
-         //console.log(postId);
-         //console.log(post);
-         let li = document.createElement('li');
-         li.innerHTML = `<li>${data.id}</li><li>${data.name}</li>`;
-         ul.appendChild(li);
-
-     }
-     document.body.appendChild(ul);
- });
-
-
-
-
-
-
-
-
-
-
+  let ul = document.createElement('ul');
+  for (const post of data) {
+      //console.log(postId);
+      //console.log(post);
+      let li = document.createElement('li');
+      li.innerHTML = `<li>${post.id}</li><li>${post.name}</li><li>${post.body}</li><li>${post.email}</li><br>`;
+      ul.appendChild(li)
+  }
+  document.body.appendChild(ul);})
